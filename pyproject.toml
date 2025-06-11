@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "data-utils"
+version = "0.1.0"
+description = "A utility library for parsing structured data files (CSV, TSV, fixed-width, VCF)."
+readme = "README.md"
+requires-python = ">=3.7"
+license = { text = "MIT" }
+authors = [
+  { name = "Maryna Nesterenko", email = "marynanesterenko.qa@gmail.com" }
+]
+keywords = ["data", "csv", "tsv", "fixed-width", "vcf", "qa", "bioinformatics", "automation"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Intended Audience :: Test Engineers",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+  "Topic :: Utilities"
+]
+dependencies = [
+  "pandas>=1.3.0",
+  "python-dateutil>=2.8.0",
+  "click>=8.0"
+]
+
+[project.urls]
+Homepage = "https://github.com/maryannacloud/data-utils"
+Repository = "https://github.com/maryannacloud/data-utils"
+Issues = "https://github.com/maryannacloud/data-utils/issues"
+
+[tool.setuptools.packages.find]
+exclude = ["tests", "examples"]
