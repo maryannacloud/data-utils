@@ -1,6 +1,5 @@
 from typing import List, Tuple
 
-
 def detect_column_positions(file_path: str, sample_size: int = 10) -> List[Tuple[int, int]]:
     """
     Detects start and end character positions of columns in a fixed-width text file.
@@ -42,3 +41,26 @@ def detect_column_positions(file_path: str, sample_size: int = 10) -> List[Tuple
         column_ranges.append((start, max_len - 1))
 
     return column_ranges
+
+def parse_fixed_width_file(file_path: str, column_ranges: List[Tuple[int, int]]) -> List[List[str]]:
+    """
+    Parses a fixed-width file using the provided column character ranges.
+
+    Args:
+        file_path: Path to the fixed-width text file.
+        column_ranges: List of (start, end) tuples representing column positions.
+
+    Returns:
+        A list of rows, where each row is a list of column values as strings.
+    """
+    parsed_rows: List[List[str]] = []
+
+    with open(file_path, 'r') as file:
+        for line in file:
+            row = [
+                line[start:end+1].strip()
+                for (start, end) in column_ranges
+            ]
+            parsed_rows.append(row)
+
+    return parsed_rows
